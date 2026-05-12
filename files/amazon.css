@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: Roboto, Arial;
 }
 .nav-contain{
     position: fixed;
@@ -136,4 +137,23 @@ body{
 .orders div p{
     margin-top: -5px;
     font-weight: bold;
+}
+
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+.container .card .image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    margin-bottom: 20px;
+}
+.container .card .image-container img{
+    max-width: 100%;
+    max-height: 100%;
+    overflow-clip-margin: content-box;
+    overflow: clip;
 }
