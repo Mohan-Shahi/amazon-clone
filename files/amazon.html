@@ -9,19 +9,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
 </head>
 <body>
     <header class="nav-contain">
         <nav class="navbar">
             <div class="logo">
                 <a href="/files/amazon.html">
-                    <img id="amazon-icon" src="/images/amazon-logo-white.png" alt="amazon logo">
+                    <img id="amazon-icon" src="images/amazon-logo-white.png" alt="amazon logo">
                 </a>
             </div>
             <div class="search-bar">
                 <input type="search" id="search" placeholder="Search">
                 <button>
-                    <img src="/images/search-icon.png" id="search-icon" alt="search-icon">
+                    <img src="images/icons/search-icon.png" id="search-icon" alt="search-icon">
                 </button>
                     
             </div>
@@ -39,7 +43,7 @@
                     <div class="cart-bar">
                         <div>
                             <p id="cart-number">0</p>
-                            <img id="cart-icon" src="/images/cart-icon.png" alt="">
+                            <img id="cart-icon" src="images/icons/cart-icon.png" alt="">
                         </div>
                         <h4 id="name">Cart</h4>
                     </div>
@@ -50,21 +54,27 @@
 
     <main>
         <section class="container" style="padding-top: 60px;">
+            
             <div class="card">
                 <div class="image-container">
-                    <img id="product_img" src="/images/athletic-cotton-socks-6-pairs.jpg" alt="">
+                    <img id="product_img" src="images/products/athletic-cotton-socks-6-pairs.jpg" alt="">
                 </div>
                 <div class="name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
                 <div class="ratting">
-                    <img src="/images/rating-4.png" alt="">
+                    <img src="images/ratings/rating-40.png" alt="">
                     <div class="person-to-rate">87</div>
-                    <div class="price">$10.90</div>
-                    <div class="quantity">10</div>
-                    <button class="btn">Add to cart</button>
                 </div>
+                <div class="price">$10.90</div>
+                <div class="quantity">10</div>
+                <div class="message">
+                    <i class="ri-checkbox-circle-fill"></i>
+                    <div>Added</div>
+                </div>
+                <button class="btn">Add to cart</button>
             </div>
         </section>
     </main>
-    
+    <script src="data/products.js"></script>
+    <script src="amazon.js"></script>
 </body>
 </html>
