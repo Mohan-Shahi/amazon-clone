@@ -9,45 +9,50 @@ let product_list = JSON.parse(localStorage.getItem('product_list'))||[];
 let product_render = ()=>{
     let product_display_container = document.querySelector('.container')
     let newHtml = '';
-    for(let i = 0;i<products.length;i++){
-        newHtml +=`
-            <div class="card">
-                    <div class="content">
-                        <div class="image-container">
-                        <img id="product_img" src="${products[i].image}" alt="">
-                        </div>
-                        <div class="name">${products[i].name}</div>
-                    </div>
-                    <div class="ratting">
-                            <img src="images/ratings/rating-${(products[i].rating.stars)*10}.png" alt="">
-                            <div class="person-to-rate">${products[i].rating.count}</div>
-                    </div>
-                    <div class="price">$${products[i].priceCents/100}</div>
-                    <div class="quantity">
-                        <select name="" id="number-menu">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <div class="last-container">
-                        <div class="message">
-                            <i class="ri-checkbox-circle-fill"></i>
-                            <div>Added</div>
-                        </div>
-                        <button class="btn" data-index="${i}">Add to cart</button>
-                    </div>
-            </div>
-        `
+    if(product_display_container == null){
+        return
     }
-    product_display_container.innerHTML = newHtml
+    else{
+        for(let i = 0;i<products.length;i++){
+            newHtml +=`
+                <div class="card">
+                        <div class="content">
+                            <div class="image-container">
+                            <img id="product_img" src="${products[i].image}" alt="">
+                            </div>
+                            <div class="name">${products[i].name}</div>
+                        </div>
+                        <div class="ratting">
+                                <img src="images/ratings/rating-${(products[i].rating.stars)*10}.png" alt="">
+                                <div class="person-to-rate">${products[i].rating.count}</div>
+                        </div>
+                        <div class="price">$${products[i].priceCents/100}</div>
+                        <div class="quantity">
+                            <select name="" id="number-menu">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <div class="last-container">
+                            <div class="message">
+                                <i class="ri-checkbox-circle-fill"></i>
+                                <div>Added</div>
+                            </div>
+                            <button class="btn" data-index="${i}">Add to cart</button>
+                        </div>
+                </div>
+            `
+        }
+        product_display_container.innerHTML = newHtml
+    }
 }
 
 let add_to_cart = ()=>{
@@ -60,7 +65,11 @@ let add_to_cart = ()=>{
             
         })
     })
-    cart_number.innerText = item_count.length
+    if(cart_number== null){
+        return
+    }else{
+        cart_number.innerText = item_count.length
+    }
 }
 
 
@@ -95,7 +104,11 @@ let count_display = (btn)=>{
     for(let i=1 ;i<=quantity ;i++){
         item_count.push(products[index].id)
     }
-    cart_number.innerText = item_count.length
+    if(cart_number== null){
+        return
+    }else{
+        cart_number.innerText = item_count.length
+    }
     store();   
 }
 
@@ -110,7 +123,6 @@ function onload(){
     add_to_cart()
     
 }
-console.log(product_list)
+
 onload()
 
-console.log(item_count)
