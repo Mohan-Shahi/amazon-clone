@@ -61,13 +61,20 @@ main{
     width: 100%;
     padding-top: 70px;
 }
+main .head{
+    margin-left: 180px;
+    font-size: 20px;
+    margin-top: 80px;
+}
 section{
     display: flex;
     height: 100%;
     justify-content: space-around;
-    margin-top: 80px;
     gap: 15px;
-    margin: 80px 150px;
+    margin-top: 50px ;
+    margin-right: 150px;
+    margin-left: 150px;
+    margin-bottom: 50px;
 }
 section .card-container{
     width: 70%;
@@ -78,13 +85,94 @@ section .calculation-container{
     height: 50%;
     border: 1px solid rgb(176, 176, 176);
     width: 30%;
-    margin-top: 30px;
+    margin-top: -30px;
+    border-radius: 5px;
     padding: 18px;
 }
 section .card-container .card{
     border: 1px solid rgb(176, 176, 176);
     height: 274px;
     margin-bottom: 18px;
+    border-radius: 5px;
     padding: 18px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.card .date{
+    font-weight: bold;
+    font-size: large;
+    color: green;
+}
+
+.item-detail{
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr;
+    column-gap: 30px;
+}
+
+.item-detail .image{
+    height: 150px;
+}
+.item-detail .image img{
+    /* overflow-clip-margin: content-box;
+    overflow: clip; */
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.item-detail .detail{
+    display: flex;
+    flex-direction: column;
+}
+.item-detail .detail .name{
+    height: 40px;
+    font-size: medium;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.item-detail .detail .price{
+    color: rgb(168, 3, 3);
+    font-size: medium;
+    font-weight: 600;
+}
+.item-detail .detail .quantity-item{
+    display: flex;
+    margin-top: 0px;
+    gap: 10px;
+}
+.item-detail .detail .quantity-item .ud{
+    color: rgb(93, 93, 198);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.item-detail .detail .quantity-item .ud:hover{
+    color:rgb(255, 94, 0);
+}
+
+.item-detail .option{
+    display: flex;
+    flex-direction: column;
+}
+.item-detail .option .head1{
+    font-size: large;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.item-detail .option .option-1,.option-2,.option-3{
+    display: flex;
+    margin-top: -15px;
+    gap: 4px;
+}
+div .p1{
+    margin-bottom: -11px;
+    font-size: large;
+    color: green;
+    font-weight: 600;
 }
 
