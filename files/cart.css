@@ -9,6 +9,7 @@ header{
     height: 70px;
     width: 100%;
     position: fixed;
+    background: white;
 }
 .nav-bar{
     display: flex;
@@ -54,3 +55,36 @@ header{
     font-size: x-large;
     color: gray;
 }
+
+main{
+    height: 100vh;
+    width: 100%;
+    padding-top: 70px;
+}
+section{
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    margin-top: 80px;
+    gap: 15px;
+    margin: 80px 150px;
+}
+section .card-container{
+    width: 70%;
+    margin-left: 30px; 
+    margin-top: -30px;  
+}
+section .calculation-container{
+    height: 50%;
+    border: 1px solid rgb(176, 176, 176);
+    width: 30%;
+    margin-top: 30px;
+    padding: 18px;
+}
+section .card-container .card{
+    border: 1px solid rgb(176, 176, 176);
+    height: 274px;
+    margin-bottom: 18px;
+    padding: 18px;
+}
+

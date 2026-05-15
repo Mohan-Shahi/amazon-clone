@@ -16,3 +16,5 @@ item_number_display.innerText =` ${item_count.length} items`
 console.log(product_object)
 
 
+
+
