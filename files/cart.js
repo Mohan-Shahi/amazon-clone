@@ -1,4 +1,6 @@
 
+const Estimated_tax = 10
+
 let product_object= []
 let saved_value;
 
@@ -180,6 +182,7 @@ function select_radio(){
             const date_display = card.querySelector('.date')
             
             const name = selected_radio.name;
+            
 
             date_display.innerText = `Delivery date: ${selected_radio.value}`
             const index = name.split('-')[1];
@@ -189,10 +192,10 @@ function select_radio(){
             localStorage.setItem(
                 `delivery-${index}`,
                 JSON.stringify(saved_value));
+            calculation()
             });
             
-            
-    });
+        });
 
 }
 function calculation(){
@@ -200,6 +203,7 @@ function calculation(){
     let total_quantity = 0;
     let total_price = 0;
     let total_shipping_amount = 0;
+    let final_total = 0
 
 
     let tendaystring = day_ten+', '+month_ten+' '+date_ten;
@@ -215,7 +219,7 @@ function calculation(){
 
         // get saved delivery option for this product
         let saved_delivery =
-        JSON.parse(localStorage.getItem(`delivery-${i}`));
+        JSON.parse(localStorage.getItem(`delivery-${i}`)) || tendaystring;
 
 
         
@@ -231,10 +235,53 @@ function calculation(){
         }
     }
 
+    let total_before_tax = total_price + total_shipping_amount
+    total_before_tax = total_before_tax.toFixed(2)
+    total_before_tax = Number(total_before_tax)
+
+
+    let tax_amount = (total_before_tax*Estimated_tax)/100
+    tax_amount = tax_amount.toFixed(2)
+    tax_amount = Number(tax_amount)
+
+    final_total = total_before_tax + tax_amount
+    
+
     console.log('Quantity:', total_quantity);
     console.log('Items Price:', total_price);
     console.log('Shipping:', total_shipping_amount);
-    console.log('Total:', total_price + total_shipping_amount);
+    console.log('Total before tax:', total_before_tax)
+    console.log('Estimated tax (10%):', tax_amount)
+
+    console.log('Total:', final_total);
+
+    const calculation_display = document.querySelector('.calculation-container')
+
+    calculation_display.innerHTML = `
+                <div class="title">Order Summary</div>
+                <div class="item">
+                    <div id="item">Items (${total_quantity}):</div>
+                    <div id="item_calculation">$${total_price}</div>
+                </div>
+                <div class="shipping">
+                    <div id="shipping">Shipping & handling:</div>
+                    <div id="shipping_calculation">$${total_shipping_amount}</div>
+                </div>
+                <div class="Total">
+                    <div id="Total">Total before tax:</div>
+                    <div id="Total_calculation">$${total_before_tax}</div>
+                </div>
+                <div class="tax">
+                    <div id="tax">Estimated tax (10%):</div> 
+                    <div id="tax_calculation">$${tax_amount}</div>
+                </div>
+                <div class="final_total">
+                    <div id="final_total">Order total:</div>
+                    <div id="final_total_calculation">$${final_total}</div>
+                </div>
+                <button class="btn">Place your order</button>
+    `
+
 }
 
 
@@ -242,7 +289,7 @@ function calculation(){
 function onload2(){
     product_display();
     select_radio();
-    calculation();
+    calculation()
 }
 onload2()
 

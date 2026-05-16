@@ -82,14 +82,7 @@ section .card-container{
     margin-top: -30px; 
     margin-bottom: 50px; 
 }
-section .calculation-container{
-    height: 50%;
-    border: 1px solid rgb(176, 176, 176);
-    width: 30%;
-    margin-top: -30px;
-    border-radius: 5px;
-    padding: 18px;
-}
+
 section .card-container .card{
     border: 1px solid rgb(176, 176, 176);
     height: 274px;
@@ -176,4 +169,59 @@ div .p1{
     color: green;
     font-weight: 600;
 }
+
+section .calculation-container{
+    height: 40%;
+    border: 1px solid rgb(176, 176, 176);
+    width: 30%;
+    margin-top: -30px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px;
+}
+.calculation-container .title{
+    font-size: large;
+    font-weight: 600;
+    color: black;
+}
+.calculation-container div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(47, 47, 47);
+}
+.calculation-container .shipping #shipping_calculation{
+    border-bottom: 1px solid rgba(143, 142, 142, 0.473);
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.calculation-container .tax{
+    border-bottom: 1px solid rgba(143, 142, 142, 0.473);
+    padding-bottom: 10px;
+}
+.calculation-container .final_total{
+    font-size: large;
+    font-weight: 600;
+    padding-top: 10px;
+}
+.calculation-container .final_total div{
+    color: rgb(158, 1, 1);
+}
+.calculation-container .btn{
+    padding: 15px 0px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size:small;
+    background-color: rgb(255, 230, 0);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.calculation-container .btn:hover{
+    background: rgb(228, 207, 14);
+}
+
+
 
