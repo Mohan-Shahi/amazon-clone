@@ -72,8 +72,7 @@ let product_display = ()=>{
         }
     })
     
-    let item_number_display = document.getElementById('item_number')
-    item_number_display.innerText =` ${item_count.length} items`
+    
     // console.log(product_object)
     
     
@@ -90,7 +89,7 @@ let product_display = ()=>{
     }
     else{
         for(let i = 0;i<product_object.length;i++){
-            saved_value =  JSON.parse(localStorage.getItem(`delivery-${i}`))|| 'Tuesday, May 26';
+            saved_value =  JSON.parse(localStorage.getItem(`delivery-${i}`))|| day_ten+', '+month_ten+' '+date_ten ;
             newhtml +=`
                     <div class="card">
                         <div class="date">
@@ -106,7 +105,7 @@ let product_display = ()=>{
                                 <div class="quantity-item">
                                     <p id="quantity">Quantity: ${product_object[i].quantity}</p>
                                     <p class="ud">update</p>
-                                    <p class="ud">delate</p>
+                                    <p class="ud" data-index = ${i}>delate</p>
                                 </div>
                             </div>
                             <div class="option">
@@ -156,9 +155,26 @@ let product_display = ()=>{
     }
 }
 card_display.innerHTML = newhtml;
-    
+
 }
 console.log(saved_value)
+
+
+function delate(){
+    const deletebtn = document.querySelectorAll('.ud')
+    console.log(deletebtn)
+    deletebtn.forEach(btn =>{
+        const index = btn.dataset.index
+        btn.onclick = ()=>{
+            console.log(product_list.splice(index,1))
+            localStorage.setItem('product_list',JSON.stringify(product_list))
+            product_display()
+            calculation()
+            select_radio()
+        }
+    })
+}
+
 
 
 
@@ -193,7 +209,7 @@ function select_radio(){
                 `delivery-${index}`,
                 JSON.stringify(saved_value));
             calculation()
-            });
+        });
             
         });
 
@@ -217,13 +233,10 @@ function calculation(){
         (product_object[i].priceCents / 100) *
         product_object[i].quantity;
 
-        // get saved delivery option for this product
         let saved_delivery =
         JSON.parse(localStorage.getItem(`delivery-${i}`)) || tendaystring;
 
 
-        
-        // shipping calculation
         if(saved_delivery === tendaystring){
             total_shipping_amount += 0;
         }
@@ -234,6 +247,7 @@ function calculation(){
             total_shipping_amount += 9.99;
         }
     }
+    total_price = Number(total_price.toFixed(2))
 
     let total_before_tax = total_price + total_shipping_amount
     total_before_tax = total_before_tax.toFixed(2)
@@ -244,16 +258,10 @@ function calculation(){
     tax_amount = tax_amount.toFixed(2)
     tax_amount = Number(tax_amount)
 
-    final_total = total_before_tax + tax_amount
+    final_total = Number((total_before_tax + tax_amount).toFixed(2))
+    let item_number_display = document.getElementById('item_number')
+    item_number_display.innerText =` ${total_quantity} items`
     
-
-    console.log('Quantity:', total_quantity);
-    console.log('Items Price:', total_price);
-    console.log('Shipping:', total_shipping_amount);
-    console.log('Total before tax:', total_before_tax)
-    console.log('Estimated tax (10%):', tax_amount)
-
-    console.log('Total:', final_total);
 
     const calculation_display = document.querySelector('.calculation-container')
 
@@ -281,16 +289,15 @@ function calculation(){
                 </div>
                 <button class="btn">Place your order</button>
     `
-
+    delate()
 }
-
-
 
 function onload2(){
     product_display();
     select_radio();
     calculation()
+    delate();
 }
 onload2()
 
-// localStorage.clear()
+

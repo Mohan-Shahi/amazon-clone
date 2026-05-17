@@ -65,10 +65,14 @@ let add_to_cart = ()=>{
             
         })
     })
-    if(cart_number== null){
+    let total_quantity =0
+    for(let i=0;i<product_list.length;i++){
+        total_quantity+=product_list[i].quantity
+    }
+    if(cart_number == null){
         return
     }else{
-        cart_number.innerText = item_count.length
+        cart_number.innerText = total_quantity
     }
 }
 
@@ -104,10 +108,15 @@ let count_display = (btn)=>{
     for(let i=1 ;i<=quantity ;i++){
         item_count.push(products[index].id)
     }
+
+    let total_quantity = 0
+    for(let i=0;i<product_list.length;i++){
+        total_quantity +=product_list[i].quantity
+    }
     if(cart_number== null){
         return
     }else{
-        cart_number.innerText = item_count.length
+        cart_number.innerText = total_quantity
     }
     store();   
 }
